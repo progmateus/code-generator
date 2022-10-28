@@ -18,7 +18,7 @@ export default class $$componentNameService{
     }
 
     update(id, data){
-         return $$currentContext.find(id, data)
+         return $$currentContext.update(id, data)
     }
 
     delete(id){

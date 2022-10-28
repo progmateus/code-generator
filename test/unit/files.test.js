@@ -1,6 +1,14 @@
-import { expect, describe, test, jest, beforeEach } from "@jest/globals";
+import {
+  expect,
+  describe,
+  test,
+  jest,
+  beforeEach
+} from "@jest/globals";
 import fsPromises from "fs/promises";
-import { createFiles } from "../../src/createFiles.js";
+import {
+  createFiles
+} from "../../src/createFiles.js";
 import templates from "../../src/templates/index.js";
 
 describe("#Layers - Files Structure", () => {
@@ -25,7 +33,9 @@ describe("#Layers - Files Structure", () => {
       layers: ["inexistent"],
     };
 
-    const expected = { error: "the chosen layer doesnt have a template" };
+    const expected = {
+      error: "the chosen layer doesnt have a template"
+    };
     const result = await createFiles(myConfig);
     expect(result).toStrictEqual(expected);
   });
@@ -33,13 +43,18 @@ describe("#Layers - Files Structure", () => {
     jest.spyOn(fsPromises, fsPromises.writeFile.name).mockResolvedValue();
     jest
       .spyOn(templates, templates.repositoryTemplate.name)
-      .mockReturnValue({ fileName: "", template: "" });
+      .mockReturnValue({
+        fileName: "",
+        template: ""
+      });
     const myConfig = {
       ...config,
       layers: ["repository"],
     };
 
-    const expected = { success: true };
+    const expected = {
+      success: true
+    };
     const result = await createFiles(myConfig);
     expect(result).toStrictEqual(expected);
 
@@ -52,16 +67,19 @@ describe("#Layers - Files Structure", () => {
     jest.spyOn(fsPromises, fsPromises.writeFile.name).mockResolvedValue();
     jest
       .spyOn(templates, templates.serviceTemplate.name)
-      .mockReturnValue({ fileName: "", template: "" });
+      .mockReturnValue({
+        fileName: "",
+        template: ""
+      });
 
     const myConfig = {
       ...config,
       layers: ["repository", "service"],
     };
 
-    console.log("myConfig: ",myConfig )
-
-    const expected = { success: true };
+    const expected = {
+      success: true
+    };
     const result = await createFiles(myConfig);
     expect(result).toStrictEqual(expected);
 
@@ -76,13 +94,18 @@ describe("#Layers - Files Structure", () => {
     jest.spyOn(fsPromises, fsPromises.writeFile.name).mockResolvedValue();
     jest
       .spyOn(templates, templates.factoryTemplate.name)
-      .mockReturnValue({ fileName: "", template: "" });
+      .mockReturnValue({
+        fileName: "",
+        template: ""
+      });
 
     const myConfig = {
       ...config,
     };
 
-    const expected = { success: true };
+    const expected = {
+      success: true
+    };
     const result = await createFiles(myConfig);
     expect(result).toStrictEqual(expected);
 

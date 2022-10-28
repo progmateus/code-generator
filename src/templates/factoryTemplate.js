@@ -14,7 +14,7 @@ const currentContextAnchor = '$$currentContext'
 
 const template = `
 import $$serviceName from "../service/$$serviceNameDep.js";
-import $$repositoryName from "../service/$$repositoryNameDep.js";
+import $$repositoryName from "../repository/$$repositoryNameDep.js";
 
 
 export default class $$componentNameFactory{
@@ -28,12 +28,12 @@ export default class $$componentNameFactory{
 export function factoryTemplate(componentName, repositoryName, serviceName) {
     // const currentContext = `this.${repositoryName}`
     const textFile = template
-                        .replaceAll(componentNameAnchor, Util.upperCaseFirstLetter(componentName))
-                        .replaceAll(serviceNameDepAnchor, Util.lowerCaseFirstLetter(serviceName))
-                        .replaceAll(repositoryNameDepAnchor, Util.lowerCaseFirstLetter(repositoryName))
+        .replaceAll(componentNameAnchor, Util.upperCaseFirstLetter(componentName))
+        .replaceAll(serviceNameDepAnchor, Util.lowerCaseFirstLetter(serviceName))
+        .replaceAll(repositoryNameDepAnchor, Util.lowerCaseFirstLetter(repositoryName))
 
-                        .replaceAll(serviceNameAnchor, Util.upperCaseFirstLetter(serviceName))
-                        .replaceAll(repositoryNameAnchor, Util.upperCaseFirstLetter(repositoryName))
+        .replaceAll(serviceNameAnchor, Util.upperCaseFirstLetter(serviceName))
+        .replaceAll(repositoryNameAnchor, Util.upperCaseFirstLetter(repositoryName))
 
     return {
         fileName: `${componentName}Factory`,

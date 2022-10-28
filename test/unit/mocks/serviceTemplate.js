@@ -13,7 +13,7 @@ export default class ProductService{
     }
 
     update(id, data){
-         return this.productRepository.find(id, data)
+         return this.productRepository.update(id, data)
     }
 
     delete(id){
